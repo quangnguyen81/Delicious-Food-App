@@ -1,5 +1,5 @@
 const colors = {
-  main: '#Fb9736',
+  main: '#f55b02',
   txtMain: '#006938',
   colorf39: '#F39C12',
   gray5b71: '#5B7195',
@@ -44,6 +44,7 @@ const colors = {
   gray1: '#bfbfbf',
   gray4: '#e6e6e6',
   gray5: 'rgba(226,232,235, 0.6)',
+  gray6: '#f6f4f4',
   orange: '#Fb9736',
   lightBlue: '#1a8cff',
   lightBlue1: '#008ae6',

@@ -21,6 +21,7 @@ const TextField = (props) => {
     textColor,
     tinColor,
     fontSize,
+    renderIcon = () => {}
   } = props;
 
   return (
@@ -38,15 +39,29 @@ const TextField = (props) => {
         keyboardType={keyboardType}
         onChangeText={(val) => onChangeText(val)}
         style={{
-          height: HEIGHTXD(109),
-          color: textColor,
-          borderBottomWidth: 1,
+          height: HEIGHTXD(140),
+          width: WIDTHXD(950),
+          color: '#000',
+          // borderWidth: 1,
           fontSize: fontSize ? fontSize : getFontXD(42),
-          paddingVertical: 5,
-          paddingHorizontal: 5,
-          borderBottomColor: "#80E0FF",
+          paddingVertical: 12,
+          paddingHorizontal: 15,
+          borderRadius: 20,
+          backgroundColor: R.colors.gray6,
+          fontWeight: '300',
+          position: "relative",
+          paddingLeft: 80,
+          // borderBottomColor: "#80E0FF",
         }}
       />
+      <View style={{
+          position: "absolute",
+          left: 30,
+          bottom: 40
+      }}
+      >
+        {renderIcon()}
+      </View>
       <View
         style={{
           height: 20,
@@ -57,11 +72,12 @@ const TextField = (props) => {
         {error && (
           <Text
             style={{
-              color: tinColor ? tinColor : "#ffc700",
+              color: tinColor ? tinColor : R.colors.red,
               fontSize: getFontXD(32),
             }}
           >
-            {I18n.t("PleaseEnterField")}
+            {/* {I18n.t("PleaseEnterField")} */}
+            Please enter field
           </Text>
         )}
       </View>

@@ -40,7 +40,7 @@ const Button = (props) => {
         style={[
           {
             fontSize: getFontXD(46),
-            color: R.colors.textMain,
+            color: R.colors.white,
             fontWeight: "600",
           },
           { ...txtStyle },
