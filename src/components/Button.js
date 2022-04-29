@@ -24,13 +24,13 @@ const Button = (props) => {
           borderRadius: 10,
           marginVertical: HEIGHTXD(50),
           elevation: 2,
-          shadowColor: "#000",
-          shadowOffset: {
-            width: 0,
-            height: 1,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 2.84,
+          // shadowColor: "#000",
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 1,
+          // },
+          // shadowOpacity: 0.25,
+          // shadowRadius: 2.84,
         },
         { ...containerStyle },
       ]}
@@ -40,7 +40,7 @@ const Button = (props) => {
         style={[
           {
             fontSize: getFontXD(46),
-            color: R.colors.white,
+            color: R.colors.textMain,
             fontWeight: "600",
           },
           { ...txtStyle },

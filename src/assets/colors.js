@@ -45,6 +45,7 @@ const colors = {
   gray4: '#e6e6e6',
   gray5: 'rgba(226,232,235, 0.6)',
   gray6: '#f6f4f4',
+  txtGray: '#959eac',
   orange: '#Fb9736',
   lightBlue: '#1a8cff',
   lightBlue1: '#008ae6',
@@ -56,6 +57,15 @@ const colors = {
   red1: '#FA1E1E',
   bgMain: '#9EF8C9',
   brown: '#886327',
+
+  menu1: '#e5efdf',
+  menu2: '#fdebcd',
+  menu3: '#f6e0d5',
+  menu4: '#dceaf3',
+  menu5: '#e5e2f1',
+  menu6: '#f6f4f4',
+  menu7: '#c2c5c7',
+  menu8: '#d0c9ed',
 };
 
 export default colors;

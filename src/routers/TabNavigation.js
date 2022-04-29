@@ -6,11 +6,15 @@ import { connect } from "react-redux";
 import R from "../assets/R";
 import Octicons from "react-native-vector-icons/Octicons";
 import Entypo from "react-native-vector-icons/Entypo"
+import Ionicons from "react-native-vector-icons/Ionicons"
+import Material from "react-native-vector-icons/MaterialCommunityIcons"
+import Feather from "react-native-vector-icons/Feather"
+
 
 import Home from "../Screens/home/Home";
 import History from "../Screens/history/History";
 import Notification from "../Screens/notification/Notification";
-import Account from "../Screens/Account/Account";
+import MyList from "../Screens/MyList/MyList";
 import Profile from "../Screens/Profile/Profile"
 
 const Tab = createBottomTabNavigator();
@@ -26,9 +30,9 @@ const TabNavigator = (props) => {
           name="HomeScreen"
           component={Home}
           options={{
-            tabBarLabel: "",
+            tabBarLabel: "Home",
             tabBarIcon: ({ color, size }) => (
-              <Octicons name="home" size={size} color={color} />
+              <Ionicons name="ios-home" size={size} color={color} />
             ),
           }}
         />
@@ -36,30 +40,19 @@ const TabNavigator = (props) => {
           name="HistoryScreen"
           component={History}
           options={{
-            tabBarLabel: "",
+            tabBarLabel: "Order",
             tabBarIcon: ({ color, size }) => (
-              <Octicons name="history" size={size} color={color} />
-            ),
-          }}
-        />
-
-        <Tab.Screen
-          name="NotificationScreen"
-          component={Notification}
-          options={{
-            tabBarLabel: "",
-            tabBarIcon: ({ color, size }) => (
-              <Octicons name="bell" size={size} color={color} />
+              <Material name="text-box-outline" size={size} color={color} />
             ),
           }}
         />
         <Tab.Screen
-          name="AccountScreen"
-          component={Account}
+          name="MylistScreen"
+          component={MyList}
           options={{
-            tabBarLabel: "",
+            tabBarLabel: "My List",
             tabBarIcon: ({ color, size }) => (
-              <Octicons name="person" size={size} color={color} />
+              <Feather name="bookmark" size={size} color={color} />
             ),
           }}
         />
@@ -69,7 +62,7 @@ const TabNavigator = (props) => {
           options={{
             tabBarLabel: "Profile",
             tabBarIcon: ({ color, size }) => (
-              <Entypo name="circle-with-plus" size={size} color={color} />
+              <Feather name="user" size={size} color={color} />
             ),
           }}
         />

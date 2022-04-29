@@ -9,6 +9,8 @@ import SignUp from "../Screens/Login/SignUp";
 import Forgot from "../Screens/Login/Forgot";
 import Otp from "../Screens/Login/Otp";
 import NewPassword from "../Screens/Login/NewPassword";
+import FoodRestaurant from "../Screens/home/FoodRestaurant";
+import Cart from "../Screens/home/Cart";
 
 
 import * as ScreenName from "./ScreenNames";
@@ -22,7 +24,7 @@ function MyStack(props) {
         headerStatusBarHeight: 0,
       }}
       headerMode={"none"}
-      initialRouteName={ScreenName.INTROSCREEN}
+      initialRouteName={ScreenName.TABNAVIGATOR}
     >
       <Stack.Screen name={ScreenName.INTROSCREEN} component={Intro} />
       <Stack.Screen name={ScreenName.SIGNINSCREEN} component={SignIn} />
@@ -30,6 +32,9 @@ function MyStack(props) {
       <Stack.Screen name={ScreenName.FORGOTSCREEN} component={Forgot} />
       <Stack.Screen name={ScreenName.OTPSCREEN} component={Otp} />
       <Stack.Screen name={ScreenName.NEWPASSWORDSCREEN} component={NewPassword} />
+      <Stack.Screen name={ScreenName.TABNAVIGATOR} component={TabNavigator} />
+      <Stack.Screen name={ScreenName.FOODRESTAURANT} component={FoodRestaurant} />
+      <Stack.Screen name={ScreenName.CARTSCREEN} component={Cart} />
       
       
     </Stack.Navigator>

@@ -10,6 +10,7 @@ import Button from "../../components/Button";
 import { FORGOTSCREEN } from '../../routers/ScreenNames'
 import R from "../../assets/R";
 import images from "../../assets/images";
+import { TABNAVIGATOR } from "../../routers/ScreenNames"
 
 export default (props) => {
 
@@ -21,7 +22,7 @@ export default (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
-    // navigate.navigate(TABNAVIGATOR);
+    navigate.navigate(TABNAVIGATOR);
     console.log(data);
     };
 

@@ -21,3 +21,12 @@ export const SAVENAVIGATE = 'SAVENAVIGATE';
 export const NEW_SCREEN = 'NEW_SCREEN';
 export const CLEAR_SCREEN = 'CLEAR_SCREEN';
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
+
+export const ADD = 'ADD';
+export const SUB = 'SUB';
+
+export const ADDCART = 'ADDCART';
+export const DELETECART = 'DELETECART';
+export const INCREASEQUANTITY = 'INCREASEQUANTITY';
+export const DECREASEQUANTITY = 'DECREASEQUANTITY';
+

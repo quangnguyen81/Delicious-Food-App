@@ -141,6 +141,7 @@ export default (props) => {
                                 title="Sign In" 
                                 backgroundColor={R.colors.main} 
                                 containerStyle={{height: 56, borderRadius: 20}} 
+                                txtStyle={{color: '#fff'}}
                                 onPress={() => navigate.navigate(SIGNINSCREEN)}
                             />
                             <Button 
