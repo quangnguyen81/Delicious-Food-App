@@ -11,9 +11,8 @@ import { addCart, deleteCart, increaseQuantity, decreaseQuantity } from '../../a
 
 const Tab = createMaterialTopTabNavigator();
 
-
-
 function MaterialTopTab(props) {
+  const restaurantDetailData = props.data.item
   return (
     <Tab.Navigator
         swipeEnabled
@@ -50,15 +49,15 @@ function MaterialTopTab(props) {
     >
       <Tab.Screen 
             name="Order" 
-            children={() => <MaterialTopTabView type={constants.ORDER}/>}
+            children={() => <MaterialTopTabView data={restaurantDetailData} type={constants.ORDER}/>}
         />
       <Tab.Screen 
             name="Reviews" 
-            children={() => <MaterialTopTabView type={constants.REVIEWS}/>}
+            children={() => <MaterialTopTabView data={restaurantDetailData} type={constants.REVIEWS}/>}
         />
       <Tab.Screen 
             name="Information" 
-            children={() => <MaterialTopTabView type={constants.INFOMATION}/>}
+            children={() => <MaterialTopTabView data={restaurantDetailData} type={constants.INFOMATION}/>}
         />
     </Tab.Navigator>
   );

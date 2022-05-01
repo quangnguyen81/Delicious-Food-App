@@ -50,6 +50,8 @@ const images = {
   avatar2: require("./images/avatar2.jpeg"),
   avatar3: require("./images/avatar3.jpeg"),
 
+  cartEmty: require("./images/cartEmty.png"),
+
 };
 
 export default images;

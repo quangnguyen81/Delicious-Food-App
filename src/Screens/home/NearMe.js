@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 
 import StarReview from '../../components/StarReview'
 import R from "../../assets/R";
-import { restaurantsData} from '../../apis/fakeData'
+import { restaurantsData } from '../../apis/fakeData'
 import { addCart, deleteCart, increaseQuantity, decreaseQuantity } from '../../actions/CartAction'
 
 import {

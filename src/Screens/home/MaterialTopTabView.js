@@ -13,14 +13,14 @@ import R from '../../assets/R';
 import StarReview from '../../components/StarReview';
 import { useNavigation } from "@react-navigation/native";
 import { CARTSCREEN } from '../../routers/ScreenNames'
+import constants from '../../Config/constants';
 
-const Tab = createMaterialTopTabNavigator();
-const { width, height } = Dimensions.get('window')
 
 function MaterialTopTabView(props) {
     const navigate = useNavigation()
     const products = props.product.products
-    const carts = props.product.carts
+    const {data, type} = props
+
 
     const [selectedCountFood, setSelectedCountFood] = useState(null)
     const [textShown, setTextShown] = useState(false); //To show ur remaining Text
@@ -40,7 +40,7 @@ function MaterialTopTabView(props) {
   },[]);
 
     const renderOrder = () => {
-       return products?.map((product, id) => {
+       return data.order.map((product, id) => {
            return (
             <View key={`${id}`} style={{flexDirection: 'row', marginTop: 24, position: 'relative'}}>
                 <View style={{flex: 3}}>
@@ -75,7 +75,7 @@ function MaterialTopTabView(props) {
                     {props.product.carts.map((cart) => {
                     if (product.idOrder === cart.id) {
                         return (
-                            <>
+                            <View style={{flexDirection: 'row', alignItems: 'center'}} key={cart.id}>
                                 {cart.count > 0 && (
                                     <>
                                         <TouchableNativeFeedback onPress={() => props.decreaseQuantity(cart.id)}>
@@ -92,7 +92,7 @@ function MaterialTopTabView(props) {
                                             <Text style={{paddingHorizontal: 6}}>{cart.count}</Text>
                                     </>
                                 )}
-                            </>
+                            </View>
                         )
                     }
                     })}   
@@ -109,8 +109,8 @@ function MaterialTopTabView(props) {
     }
 
     const renderReviews = () => {
-        return data.item.reviewsDetail.map((review, index) => (
-            <View key={index} style={{ paddingTop: 32}}>
+        return data.reviewsDetail.map((review, id) => (
+            <View key={`${id}`} style={{ paddingTop: 32}}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                         <Image style={{width: 55, height: 55, borderRadius: 50}} source={review.avatar} />
@@ -138,7 +138,7 @@ function MaterialTopTabView(props) {
                 </View>
                 <View style={{flexDirection: 'row', marginTop: 12}}>
                     {review.feedBackImg.map((image, index) => (
-                        <View style={{marginRight: 12}}>
+                        <View key={index} style={{marginRight: 12}}>
                             <Image key={index} style={{width: 60, height: 60, borderRadius: 10}} source={image} />
                         </View>
                     ))}
@@ -148,7 +148,7 @@ function MaterialTopTabView(props) {
     }
 
     const renderInfo = () => {
-        const infoData = data.item.info
+        const infoData = data.info
         return (
             <View style={{marginTop: 32}}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 24, alignItems: 'center'}}>
@@ -191,10 +191,18 @@ function MaterialTopTabView(props) {
         position: 'relative'
     }}>
         <ScrollView showsVerticalScrollIndicator={false}>
-            {renderOrder()}
-            {/* {type === constants.REVIEWS && renderReviews()}
-            {type === constants.INFOMATION && renderInfo()} */}
+            <View>
+                {type === constants.ORDER && renderOrder()}
+            </View>
+            <View>
+                {type === constants.REVIEWS && renderReviews()}
+            </View>
+            <View>
+                {type === constants.INFOMATION && renderInfo()}
+            </View>
         </ScrollView>
+
+        {/* cart */}
         {props.product.carts?.length > 0 ? (
             <TouchableOpacity style={{
                 width: 80, 

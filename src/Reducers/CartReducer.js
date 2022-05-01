@@ -6,14 +6,9 @@ import {
   DECREASEQUANTITY
 } from '../actions/actionTypes';
 
-import { restaurantsData } from '../apis/fakeData'
-
-const orderState = restaurantsData[0].order
-
 const initialState = {
   numberCart: 0,
   carts: [],
-  products: orderState
 }
 // @ts-ignore
 
@@ -30,7 +25,8 @@ export default function CartReducer(state = initialState, action) {
           images: action.payload.images,
           price: action.payload.price,
           quantity: action.payload.quantity,
-          like: action.payload.like
+          like: action.payload.like,
+          total: action.payload.price
         }
 
         state.carts.push(cart)
@@ -39,6 +35,9 @@ export default function CartReducer(state = initialState, action) {
         state.carts.map((item, key) => {
           if(item.id === action.payload.idOrder) {
             state.carts[key].count++
+            // state.carts[key].total * state.carts[key].count++
+            // item.total * item.count
+            
             check = true
           }
         })
@@ -50,7 +49,8 @@ export default function CartReducer(state = initialState, action) {
               images:action.payload.images,
               price:action.payload.price,
               quantity: action.payload.quantity,
-              like: action.payload.like
+              like: action.payload.like,
+              total: action.payload.price
           }
           state.carts.push(_cart);
       }}
@@ -63,24 +63,33 @@ export default function CartReducer(state = initialState, action) {
 
     case INCREASEQUANTITY: {
         state.numberCart++
-        state.carts[action.payload - 1].count++
-        
+        // state.carts[action.payload - 1].count++
+        let newList = state.carts.map(cart => {
+          if (cart.id == action.payload)
+            return {...cart,count: cart.count + 1, total: Number(cart.price * (cart.count + 1))}
+            else
+              return {...cart}
+        })
+
+      console.log(state.carts);
+
       return {
         ...state,
+        carts: newList
       }
     }
 
     case DECREASEQUANTITY: {
       // tru count trong carts
-      const newList=state.carts.map(e=>{
-        if(e.id==action.payload){
-            return {...e,count: e.count-1}
+      const newList = state.carts.map(cart => {
+        if(cart.id == action.payload){
+          return {...cart,count: cart.count - 1, total: Number(cart.price * (cart.count - 1))}
         } else {
-          return {...e}
+          return {...cart}
         }
       }
       )
-      const data=newList.filter(e=>e.count>0)
+      const data = newList.filter(cart => cart.count > 0)
 
       console.log("newList: ",data)
       console.log("payload: ",action.payload)

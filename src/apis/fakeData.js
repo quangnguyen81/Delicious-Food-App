@@ -222,7 +222,7 @@ const categoryData = [
           images: images.brf1,
           quantity: 999,
           like: 120,
-          price: 15.50
+          price: 15.5
         },
 
         {
@@ -231,7 +231,7 @@ const categoryData = [
           images: images.brf2,
           quantity: 210,
           like: 300,
-          price: 22.50
+          price: 22.5
         },
         {
           idOrder: 3,
@@ -247,7 +247,7 @@ const categoryData = [
           images: images.brf4,
           quantity: 300,
           like: 30,
-          price: 9.50
+          price: 9.5
         },
       ],
       reviewsDetail: [
