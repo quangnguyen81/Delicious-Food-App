@@ -71,8 +71,6 @@ export default function CartReducer(state = initialState, action) {
               return {...cart}
         })
 
-      console.log(state.carts);
-
       return {
         ...state,
         carts: newList

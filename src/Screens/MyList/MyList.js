@@ -3,37 +3,25 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import MyListView from './MyListView';
 
 import { connect } from "react-redux";
-import { add, sub } from "../../actions/numberAction"
+import { toggleLike } from "../../actions/FavoriteAction"
 const MyList = (props) => {
-  console.log(props)
 
+  const favoriteStore = props.product.favotiteStore
  
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <MyListView data={props.number}  />
-      <View style={{paddingHorizontal: 100}}>
-        <TouchableOpacity onPress={() => {props.sub(1)}}>
-          <Text>-</Text>
-        </TouchableOpacity>
-
-        <Text style={{fontSize: 20}}>{props.count}</Text>
-        <TouchableOpacity onPress={() => props.add(2)}>
-          <Text>+</Text>
-        </TouchableOpacity>
-        
-      </View>
+      <MyListView listFavorite={favoriteStore} />
     </View>
   );
 };
 
-
 const mapStateToProps = (state) => {
   return {
-    count: state.NumberReducer,
+    product: state.FavoriteReducer,
   };
 };
 
 export default connect(mapStateToProps, {
-  add,
-  sub,
-})(MyList);
+  toggleLike,
+  
+})(MyList)

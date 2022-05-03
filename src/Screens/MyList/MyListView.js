@@ -16,19 +16,22 @@ import AntDesign from "react-native-vector-icons/AntDesign"
 import R from "../../assets/R";
 import { getFontXD, getWidth, WIDTHXD, WIDTHXDICON } from "../../Config/Functions";
 import { useNavigation } from "@react-navigation/native";
+
 import images from "../../assets/images";
 import { 
   categoryData, 
   restaurantsData, 
   breakfastData
 } from '../../apis/fakeData'
+import Restaurant from "../home/Restaurant";
 
 const { width, height } = Dimensions.get('window')
 
 const MyListView = (props) => {
 
-  const number = props
+  const {listFavorite} = props
 
+  console.log(listFavorite);
 
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = useState('');
@@ -77,6 +80,25 @@ const MyListView = (props) => {
     )
   }
 
+  const renderListRestaurant = () => {
+    return listFavorite.map((restaurant, index) => {
+      return restaurant.favorite && (
+        <View key={index}>
+          <Restaurant 
+            image={restaurant.images}
+            name={restaurant.name}
+            duration={restaurant.duration}
+            distance={restaurant.distance}
+            location={restaurant.location}
+            rating={restaurant.rating}
+            item={restaurant}
+            
+          />
+        </View>
+      )
+    })
+  }
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -101,6 +123,9 @@ const MyListView = (props) => {
         />
       <View style={{}}>
         {renderCategories()}
+      </View>
+      <View>
+        {renderListRestaurant()}
       </View>
       </View>
     </ScrollView>

@@ -5,18 +5,22 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 import Entypo from "react-native-vector-icons/Entypo"
 import LinearGradient from "react-native-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { connect } from "react-redux";
 
 import R from "../../assets/R";
 import StarReview from "../../components/StarReview";
 import MaterialTopTab from "./MaterialTopTab";
+import { toggleLike } from '../../actions/FavoriteAction'
 
 const { width, height } = Dimensions.get('window')
-export default (props) => {
+function FoodRestaurant (props) {
     const [vote, setVote] = useState(false)
 
     const navigate = useNavigation()
     const restaurantsData = props.route.params
 
+    const favotiteStore = props.product.favotiteStore
+    console.log(favotiteStore[restaurantsData.item.id]?.favorite);
     return (        
         <View style={{flex: 1, backgroundColor: R.colors.white}}>
             <StatusBar barStyle="light-content" />
@@ -34,8 +38,8 @@ export default (props) => {
                         <TouchableOpacity>
                             <Ionicons style={{paddingHorizontal: 4}} name="search-outline" size={32} color="white" />
                         </TouchableOpacity>
-                        <TouchableNativeFeedback onPress={() => setVote(!vote)}>
-                            <Ionicons style={{paddingHorizontal: 4}} name="heart" size={32} color={vote ? R.colors.red : R.colors.white} />
+                        <TouchableNativeFeedback onPress={() => props.toggleLike(restaurantsData.item)}>
+                            <Ionicons style={{paddingHorizontal: 4}} name="heart" size={32} color={favotiteStore[restaurantsData.item.id]?.favorite ? R.colors.red : R.colors.white} />
                         </TouchableNativeFeedback>
                         <TouchableOpacity>
                             <Ionicons style={{paddingHorizontal: 4}} name="share-social-outline" size={32} color="white" />
@@ -80,3 +84,14 @@ export default (props) => {
 
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+      product: state.FavoriteReducer,
+    };
+  };
+  
+  export default connect(mapStateToProps, {
+    toggleLike,
+    
+  })(FoodRestaurant)

@@ -6,6 +6,7 @@ import ScreenInitReducer from './ScreenInit';
 import languageReducer from './languageReducer';
 import NumberReducer from './NumberReducer';
 import CartReducer from './CartReducer';
+import FavoriteReducer from './FavoriteReducer';
 // @ts-ignore
 const rootReducer = combineReducers({
   userReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   ScreenInitReducer,
   languageReducer,
   NumberReducer,
-  CartReducer
+  CartReducer,
+  FavoriteReducer
 });
 
 export default rootReducer;
